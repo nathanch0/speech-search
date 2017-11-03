@@ -1,7 +1,7 @@
 import speech_recognition as sr
 
 
-def main():
+def speech():
     # get audio from the microphone
     r = sr.Recognizer()
     with sr.Microphone() as source:
@@ -10,6 +10,7 @@ def main():
 
     try:
         print("You said " + r.recognize_google(audio))
+        return (r.recognize_google(audio))
     except sr.UnknownValueError:
         print("Could not understand audio")
     except sr.RequestError as e:
@@ -18,4 +19,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    speech()
