@@ -2,4 +2,6 @@
 
 # To use speech recognition
 
-##### - Install Homebrew
+##### - Install Homebrew (Package manager for Mac)
+##### - In terminal run "brew install portaudio"
+##### - In terminal run "brew install pyaudio"
