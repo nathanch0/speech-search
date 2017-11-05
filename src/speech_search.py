@@ -1,22 +1,22 @@
+import selenium
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from speechtest import speech
 
+def search():
+    keyword = speech()
+    driver_path = '/Users/nathancho/selenium_drivers/chromedriver'
+    driver = webdriver.Chrome(executable_path=driver_path)
+    driver.implicitly_wait(30)
+    driver.maximize_window()
 
-def main():
-    q = input("Enter the search query: ")
-    q = q.replace(' ', '')
-    browser = webdriver.Firefox()
-    body = browser.find_element_by_tag_name("body")
-    body.send_keys(Keys.CONTROL + 't')
-    counter = 0
-    for i in range(0,20):
-        browser.get("https://www.google.com/search?q=" + q + "&start=" + str(counter))
-        body = browser.find_element_by_tag_name("body")
-        if "thetaranights" in body.text:
-            browser.find_element_by_xpath('//a[starts-with(@href,"http://www.thetaranights.com")]').click()
-            break
-        counter += 10
+    driver.get('https://google.com')
+    search_bar = driver.find_element_by_id("lst-ib")
+    search_bar.clear()
+    search_bar.send_keys(keyword)
+    search_bar.submit()
+
 
 
 if "__main__" == __name__:
-    main()
+    search()
